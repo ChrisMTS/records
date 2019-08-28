@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Faker\Generator as Faker;
+//use Illuminate\Support\Str;
+
+Route::get('/', function (Faker $faker) {
+
+    $faketext = $faker->text(25);
+
+
+    return view('welcome', [
+        'faketext' => $faketext,
+        'fakemenu' => $faker->name,
+        ]);
 });
